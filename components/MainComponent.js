@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import CampsiteInfo from './CampsiteInfoComponent';
 import Directory from './DirectoryComponent';
-import { CAMPSITES } from '../shared/campsites';
 import Constants from 'expo-constants';
 import { View, Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
