@@ -27,7 +27,7 @@ class Home extends Component {
         this.state = {
             campsites: CAMPSITES,
             promotions: PROMOTIONS,
-            parners: PARTNERS
+            partners: PARTNERS
         };
     }
     static navigationOptions = {
