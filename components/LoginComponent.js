@@ -29,6 +29,7 @@ class Login extends Component {
             SecureStore.deleteItemAsync('userinfo').catch(error => console.log('Could not delete user info', error));
         }
     }
+    
     componentDidMount() {
         SecureStore.getItemAsync('userinfo')
             .then(userdata => {
@@ -63,7 +64,7 @@ class Login extends Component {
                     title='Remember Me'
                     center
                     checked={this.state.remember}
-                    onPress={() => this.setState({ rememeber: !this.state.remember })}
+                    onPress={() => this.setState({ remember: !this.state.remember })}
                     containerStyle={styles.formCheckbox}
                 />
                 <View>
