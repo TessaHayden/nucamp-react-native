@@ -314,22 +314,27 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator);
 
 class Main extends Component {
+
     componentDidMount() {
         this.props.fetchCampsites();
         this.props.fetchComments();
         this.props.fetchPartners();
         this.props.fetchPromotions();
+        this.showNetInfo();
+    }
 
-        NetInfo.fetch().then(connectionInfo => {
+    componentWillUnmount() {
+        this.unsubscribeNetInfo();
+    }
+
+    showNetInfo = async () => {
+        await NetInfo.fetch().then(connectionInfo => {
             (Platform.OS === 'ios')
                 ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
                 : ToastAndroid.show('Initial Network Connectivity Type:' + connectionInfo.type, ToastAndroid.LONG);
         });
     }
 
-    componentWillUnmount() {
-        this.unsubscribeNetInfo();
-    }
 
     handleConnectivityChange = connectionInfo => {
         let connectionMsg = 'You are now connected to an active network.';
